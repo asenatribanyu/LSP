@@ -7,46 +7,49 @@ typedef struct{
     char tempat_lahir[255];
     char tanggal_lahir[255];
     char prodi[255];
-}Mahasiswa;
+} Mahasiswa;
 
 Mahasiswa mhs[100];
-int index = 0;
+int count = 0;
 
-void tambahData(char nama[], char npm[], char tempat_lahir[], char tanggal_lahir[], char prodi[])
+void tambahData(const char nama[], const char npm[], const char tempat_lahir[], const char tanggal_lahir[], const char prodi[])
 {
-    if(index < 100) {
-        strcpy(mhs[index].nama, nama);
-        strcpy(mhs[index].npm, npm);
-        strcpy(mhs[index].tempat_lahir, tempat_lahir);
-        strcpy(mhs[index].tanggal_lahir, tanggal_lahir);
-        strcpy(mhs[index].prodi, prodi);
+    if(count < 100) {
+        strcpy(mhs[count].nama, nama);
+        strcpy(mhs[count].npm, npm);
+        strcpy(mhs[count].tempat_lahir, tempat_lahir);
+        strcpy(mhs[count].tanggal_lahir, tanggal_lahir);
+        strcpy(mhs[count].prodi, prodi);
+        count++;
         printf("Data berhasil ditambahkan \n");
     }
 }
 
 void tampilData(){
-    if(index == 0){
+    if(count == 0){
         printf("Data Tidak ada \n");
     }else{
-        for(int i = 0; i< index;i++){
-            printf("Nama: %s \n",mhs[i].nama);
-            printf("NPM: %s \n",mhs[i].npm);
-            printf("Tempat Lahir: %s \n",mhs[i].tempat_lahir);
-            printf("Tanggal Lahir: %s \n",mhs[i].tanggal_lahir);
-            printf("Prodi: %s \n",mhs[i].prodi);
+        for(int i = 0; i < count; i++){
+            printf("Nama: %s \n", mhs[i].nama);
+            printf("NPM: %s \n", mhs[i].npm);
+            printf("Tempat Lahir: %s \n", mhs[i].tempat_lahir);
+            printf("Tanggal Lahir: %s \n", mhs[i].tanggal_lahir);
+            printf("Prodi: %s \n", mhs[i].prodi);
+            printf("\n");
         }
     }
 }
+
 void hapusData(int data){
-    if (data < 0 || data >= index) {
+    if (data < 0 || data >= count) {
         printf("Indeks mahasiswa tidak valid.\n");
         return;
     }
 
-    for (int i = indatadex; i < index - 1; i++) {
+    for (int i = data; i < count - 1; i++) {
         mhs[i] = mhs[i + 1];
     }
-    index--;
+    count--;
     printf("Mahasiswa pada indeks %d berhasil dihapus.\n", data + 1);
 }
 
