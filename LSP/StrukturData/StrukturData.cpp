@@ -51,6 +51,9 @@ void hapusData(int data){
 }
 
 int main() {
+    printf("\nDaftar Mahasiswa:\n");
+    tampilData();
+    
     tambahData("Budi", "0620201010", "Jakarta", "2000-01-01", "Informatika");
     tambahData("Ani", "0620201011", "Bandung", "1999-12-12", "Informatika");
 
